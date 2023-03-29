@@ -1,0 +1,12 @@
+{
+  "name": "api.henryjperez.com",
+  "version": "1.0.0",
+  "description": "This will be my personal server thing",
+  "main": "dist/index.js",
+  "author": "Henry J. Perez <henryjosiasperezrangel@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "express": "4.18.1"
+  }
+}
