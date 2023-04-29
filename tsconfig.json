@@ -1,0 +1,16 @@
+{
+	"compilerOptions": {
+		"module": "NodeNext",
+		"moduleResolution": "nodenext",
+		"target": "ES2020",
+		"sourceMap": true,
+		"rootDir": "./src",
+		"outDir": "./build",
+		"baseUrl": "./",
+		"paths": {
+			"@routes": ["./src/routes/*"]
+		},
+		"allowJs": true,
+	},
+	"include": ["src/**/*"],
+}
