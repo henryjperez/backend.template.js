@@ -1,5 +1,5 @@
 import express from "express";
-import { routerApi } from "@routes/index";
+import { routerApi } from "@routes";
 
 const app = express();
 const port = null;
