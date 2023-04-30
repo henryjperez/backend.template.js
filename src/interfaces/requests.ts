@@ -1,0 +1,1 @@
+export { TestProduct, TestProductPostBody } from "@routes/tests";

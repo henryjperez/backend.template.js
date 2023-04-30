@@ -9,7 +9,13 @@
 		"baseUrl": "./",
 		"paths": {
 			"@routes": ["./src/routes/index"],
-			"@routes/*": ["./src/routes/*"]
+			"@routes/*": ["./src/routes/*"],
+
+			"@interfaces": ["./src/interfaces/index"],
+			"@interfaces/*": ["./src/interfaces/*"],
+
+			// "@services": ["./src/services/index"],
+			"@services/*": ["./src/services/*"],
 		},
 		"allowJs": true,
 	},
