@@ -1,13 +1,5 @@
-const express = require('express');
-const request = require("supertest");
-
-const app = express();
-app.get("/perro", (req, res) => {
-	res.status(203).json({ perro: "Perrinaitor" });
-});
-app.listen(9000);
-
-const api = request(app);
+import express, { Request, Response, Express } from 'express';
+import request, { Test, SuperTest } from "supertest";
 
 describe("A Jest thing or something", () => {
 	test("Sum test", () => {
@@ -16,9 +8,29 @@ describe("A Jest thing or something", () => {
 });
 
 describe('tests 4 app', () => {
+	let app: Express;
+	let server: any;
+	let api: SuperTest<Test>;
+
+	beforeEach(() => {
+		app = express();
+		app.get("/perro", (req: Request, res: Response) => {
+			res.status(203).json({ perro: "Perrinaitor" });
+		});
+		server = app.listen(9000);
+		api = request(app);
+	})
+
 	test("GET /perro", async () => {
-		const response = await api.get("/hello");
-		console.log("Perri test response", response);
-		expect(response).toBeTruthy();
+		const { statusCode, body, headers } = await api.get("/perro");
+		// console.log("Perri test response", statusCode, body, headers);
+		expect(statusCode).toBe(203);
+		expect(body.perro).toEqual("Perrinaitor");
+		expect(headers["content-type"]).toMatch(/json/);
+	});
+
+
+	afterEach(() => {
+		server.close();
 	});
 });
