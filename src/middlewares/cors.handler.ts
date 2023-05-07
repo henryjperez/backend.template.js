@@ -1,8 +1,8 @@
 import cors from 'cors';
-import { env } from "@config";
+import { isDevMode } from "@config";
 
 export function corsMiddleware() {
-	if (env === "DEVELOPMENT") {
+	if (isDevMode) {
 		return cors();
 	}
 

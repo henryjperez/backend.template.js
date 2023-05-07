@@ -2,12 +2,11 @@ import express from "express";
 import { routerApi } from "@routes";
 import { errorMiddleware } from "@middlewares/error.handler";
 import { corsMiddleware } from "@middlewares/cors.handler";
+import { loggerMiddleware } from "@middlewares/logger.handler";
 
 const app = express();
-const port = null;
 
-app.set("port", port);
-
+app.use(loggerMiddleware());
 app.use(express.json());
 app.use(corsMiddleware());
 

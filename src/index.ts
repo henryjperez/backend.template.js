@@ -1,4 +1,4 @@
 import { app } from "./app";
+import { port } from "@config";
 
-const port = app.get("port") ?? 4000;
 app.listen(port, () => console.log("🚀 App running in port:", port));
