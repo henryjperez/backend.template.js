@@ -8,7 +8,7 @@ class ArticlesServices {
 
 	}
 
-	async findOne() {
+	async findOne(slug: string) {
 
 	}
 

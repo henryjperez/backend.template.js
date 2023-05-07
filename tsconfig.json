@@ -16,6 +16,12 @@
 
 			// "@services": ["./src/services/index"],
 			"@services/*": ["./src/services/*"],
+
+			// "@middlewares": ["./src/middlewares/index"],
+			"@middlewares/*": ["./src/middlewares/*"],
+
+			// "@schemas": ["./src/schemas/index"],
+			"@schemas/*": ["./src/schemas/*"],
 		},
 		"allowJs": true,
 	},
