@@ -7,6 +7,15 @@ router.get("/", (req: Request, res: Response) => {
 	res.send("<h1>This is the test route</h1>")
 })
 
+router.get("/perro", (req: Request, res: Response) => {
+	res.statusCode = 203;
+
+	res.json({
+		perro: "Perrito",
+		value: 200*200,
+	})
+});
+
 /* GET Params */
 router.get("/monokuma/:scottie", (req: Request, res: Response) => {
 	const { scottie } = req.params;

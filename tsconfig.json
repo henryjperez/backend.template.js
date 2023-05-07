@@ -14,19 +14,17 @@
 			"@interfaces": ["./src/interfaces/index"],
 			"@interfaces/*": ["./src/interfaces/*"],
 
-			// "@services": ["./src/services/index"],
 			"@services/*": ["./src/services/*"],
 
-			// "@middlewares": ["./src/middlewares/index"],
 			"@middlewares/*": ["./src/middlewares/*"],
 
-			// "@schemas": ["./src/schemas/index"],
 			"@schemas/*": ["./src/schemas/*"],
 
 			"@config": ["./src/config/index"],
-			"@config/*": ["./src/config/*"],
+			"@config/*": ["./src/config/*"]
 		},
 		"allowJs": true,
+		"esModuleInterop": true
 	},
-	"include": ["src/**/*"],
+	"include": ["src/**/*"]
 }

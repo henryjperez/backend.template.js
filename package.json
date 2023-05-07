@@ -1,6 +1,6 @@
 {
 	"name": "api.henryjperez.com",
-	"version": "0.5.2",
+	"version": "0.7.0",
 	"description": "This will be my personal server thing",
 	"main": "dist/index.js",
 	"author": "Henry J. Perez <henryjosiasperezrangel@gmail.com>",
@@ -11,7 +11,8 @@
 		"dev": "NODE_ENV=DEVELOPMENT nodemon src/index.ts --config ./nodemon.config.json",
 		"build": "tsc --project tsconfig.json && tsc-alias",
 		"lint": "eslint",
-		"e2e": "jest --config ./jest.config.json --verbose"
+		"e2e": "jest --config ./jest.e2e.config.js --verbose",
+		"e2e:coverage": "jest --config ./jest.e2e.config.js --verbose --coverage"
 	},
 	"dependencies": {
 		"@faker-js/faker": "7.6.0",
