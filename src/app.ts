@@ -1,5 +1,4 @@
 import express from "express";
-import cors from "cors";
 import { routerApi } from "@routes";
 import { errorMiddleware } from "@middlewares/error.handler";
 import { corsMiddleware } from "@middlewares/cors.handler";

@@ -1,0 +1,1 @@
+export { Tenv } from "@config";

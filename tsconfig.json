@@ -22,6 +22,9 @@
 
 			// "@schemas": ["./src/schemas/index"],
 			"@schemas/*": ["./src/schemas/*"],
+
+			"@config": ["./src/config/index"],
+			"@config/*": ["./src/config/*"],
 		},
 		"allowJs": true,
 	},
