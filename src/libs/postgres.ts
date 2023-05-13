@@ -1,15 +1,8 @@
-import { Client } from "pg";
-import { postgres_db, postgres_password, postgres_port, postgres_user, postgres_host } from "@config";
+import { Pool } from "pg";
+import { postgres_db, postgres_password, postgres_port, postgres_user, postgres_host, postgres_uri } from "@config";
 
-export async function getConnection() {
-	const client = new Client({
-		host: postgres_host,
-		port: parseInt(postgres_host),
-		user: postgres_user,
-		password: postgres_password,
-		database: postgres_db,
-	});
-	await client.connect();
+const USER = encodeURIComponent(postgres_user);
+const PASSWORD = encodeURIComponent(postgres_password);
+const URI = postgres_uri ?? `postgres://${USER}:${PASSWORD}@${postgres_host}:${postgres_port}/${postgres_db}`;
 
-	return client;
-}
+export const pool = new Pool({ connectionString: URI });

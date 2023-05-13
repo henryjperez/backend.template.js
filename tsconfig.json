@@ -15,6 +15,7 @@
 			"@interfaces/*": ["./src/interfaces/*"],
 
 			"@services/*": ["./src/services/*"],
+			"@services": ["./src/services/index"],
 
 			"@middlewares/*": ["./src/middlewares/*"],
 
