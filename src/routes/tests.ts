@@ -1,5 +1,6 @@
 import { Router, Response, Request } from "express";
 import { faker } from "@faker-js/faker";
+import { checkApiKey } from "@middlewares/auth.handler";
 
 const router = Router();
 
@@ -7,7 +8,7 @@ router.get("/", (req: Request, res: Response) => {
 	res.send("<h1>This is the test route</h1>")
 })
 
-router.get("/perro", (req: Request, res: Response) => {
+router.get("/perro", checkApiKey, (req: Request, res: Response) => {
 	res.statusCode = 203;
 
 	res.json({

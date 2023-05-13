@@ -24,7 +24,10 @@
 			"@config": ["./src/config/index"],
 			"@config/*": ["./src/config/*"],
 
-			"@libs/*": ["./src/libs/*"]
+			"@libs/*": ["./src/libs/*"],
+
+			"@utils/*": ["./src/utils/*"],
+			"@constants": ["./src/utils/constants"]
 		},
 		"allowJs": true,
 		"esModuleInterop": true

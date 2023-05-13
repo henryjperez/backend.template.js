@@ -9,6 +9,7 @@ export const env: Tenv = process.env.NODE_ENV || "DEVELOPMENT";
 export const isDevMode = env !== "PRODUCTION";
 export const perro = process.env.PERRO;
 export const port = process.env.PORT || 9000;
+export const api_key = process.env.API_KEY;
 
 // Postgres
 export const postgres_db = process.env.POSTGRES_DB;

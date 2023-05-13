@@ -1,10 +1,6 @@
 import { Response, } from "express";
+import { errorMessages } from "@constants";
 
-const errorMessages = {
-	"500": "Internal Server Error",
-	"404": "Not Found",
-	"400": "Bad Request",
-};
 class ErrorResponse {
 	static handler(err: Error, res: Response,) {
 		this.logError(err);
