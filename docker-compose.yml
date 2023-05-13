@@ -1,0 +1,22 @@
+version: '3.3'
+
+services:
+  postgres:
+    container_name: db.henryjperez
+    image: postgres
+    env_file:
+      - .env
+    ports:
+      - "${POSTGRES_PORT}:${POSTGRES_PORT}"
+    volumes:
+      - ./db_data:/var/lib/postgresql/data
+
+  pgadmin:
+    container_name: pgadmin
+    depends_on:
+      - postgres
+    image: dpage/pgadmin4
+    env_file:
+      - .env
+    ports:
+      - 5050:80

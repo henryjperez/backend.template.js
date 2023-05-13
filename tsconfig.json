@@ -21,7 +21,9 @@
 			"@schemas/*": ["./src/schemas/*"],
 
 			"@config": ["./src/config/index"],
-			"@config/*": ["./src/config/*"]
+			"@config/*": ["./src/config/*"],
+
+			"@libs/*": ["./src/libs/*"]
 		},
 		"allowJs": true,
 		"esModuleInterop": true
