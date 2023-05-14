@@ -1,7 +1,7 @@
 {
 	"compilerOptions": {
-		"module": "NodeNext",
-		"moduleResolution": "nodenext",
+		"module": "CommonJS",
+		"moduleResolution": "node",
 		"target": "ES2020",
 		"sourceMap": true,
 		"rootDir": "./src",
@@ -10,6 +10,8 @@
 		"paths": {
 			"@routes": ["./src/routes/index"],
 			"@routes/*": ["./src/routes/*"],
+
+			"@graphql": ["./src/graphql/index"],
 
 			"@interfaces": ["./src/interfaces/index"],
 			"@interfaces/*": ["./src/interfaces/*"],
