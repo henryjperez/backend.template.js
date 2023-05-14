@@ -27,6 +27,7 @@
 			"@libs/*": ["./src/libs/*"],
 
 			"@utils/*": ["./src/utils/*"],
+			"@utils": ["./src/utils/index"],
 			"@constants": ["./src/utils/constants"]
 		},
 		"allowJs": true,
