@@ -1,13 +1,11 @@
 FROM node:16
 
-WORKDIR /app
+WORKDIR /usr/app
 
 COPY package*.json ./
 
 RUN yarn install
 
-COPY ../ ./
-
-ENV PORT=9000
+COPY [".", /usr/app]
 
 CMD [ "yarn", "start" ]

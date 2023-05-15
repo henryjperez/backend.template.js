@@ -1,1 +1,4 @@
 node_modules/
+db_data/
+coverage_e2e/
+build/
