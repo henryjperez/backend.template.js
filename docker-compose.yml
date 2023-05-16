@@ -21,17 +21,17 @@ services:
     ports:
       - 5050:80
 
-  app:
-    container_name: app
-    env_file:
-      - .env
-    depends_on:
-      - pgadmin
-    ports:
-      - "${PORT}:9000"
-    volumes:
-      - .:/usr/app
-    build:
-      context: ./
-      target: dev
-    command: yarn dev
+  # app:
+  #   container_name: app
+  #   env_file:
+  #     - .env
+  #   depends_on:
+  #     - pgadmin
+  #   ports:
+  #     - "${PORT}:9000"
+  #   volumes:
+  #     - .:/usr/app
+  #   build:
+  #     context: ./
+  #     target: dev
+  #   command: yarn dev

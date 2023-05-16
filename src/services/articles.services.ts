@@ -1,6 +1,7 @@
-import { pool } from "@libs/postgres";
 import { IServices } from "@interfaces";
 import { Services } from "@services";
+import { PrismaClient } from '@prisma/client'
+const prisma = new PrismaClient()
 
 class ArticlesServices extends Services {
 	constructor(
@@ -10,7 +11,13 @@ class ArticlesServices extends Services {
 	}
 	
 	async create() {
-
+		const perro = await prisma.user.create({
+			data: {
+				email: "perrito4@email.com",
+				name: "Perrito",
+			}
+		});
+		return perro;
 	}
 
 	async find() {

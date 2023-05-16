@@ -1,6 +1,5 @@
 import express from "express";
 import { expressMiddleware } from '@apollo/server/express4';
-import 'reflect-metadata';
 
 import { routerApi } from "@routes";
 import { server as gql_server } from "@graphql";
