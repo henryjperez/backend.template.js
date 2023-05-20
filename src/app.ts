@@ -1,8 +1,9 @@
 import express from "express";
 import { expressMiddleware } from '@apollo/server/express4';
-
 import { routerApi } from "@routes";
 import { server as gql_server } from "@graphql";
+
+import "@auth";
 import { errorMiddleware } from "@middlewares/error.handler";
 import { corsMiddleware } from "@middlewares/cors.handler";
 import { loggerMiddleware } from "@middlewares/logger.handler";

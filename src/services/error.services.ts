@@ -1,9 +1,15 @@
 import { Response, } from "express";
 import { errorMessages } from "@constants";
+import { ErrorResponse } from "@error";
 
-class ErrorResponse {
-	static handler(err: Error, res: Response,) {
+export class ErrorService {
+	static handler(err: ErrorResponse | Error, res: Response,) {
 		this.logError(err);
+		// @ts-ignore
+		if (err?.statusCode) {
+			// @ts-ignore
+			res.statusCode = err?.statusCode;
+		}
 		if (res.statusCode < 400) {
 			res.statusCode = 500;
 		}
@@ -29,5 +35,3 @@ class ErrorResponse {
 		console.error("An error ocurred ==>>\n", err);
 	}
 }
-
-export { ErrorResponse };

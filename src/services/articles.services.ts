@@ -3,7 +3,7 @@ import { Services } from "@services";
 import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
-class ArticlesServices extends Services {
+export class ArticlesServices extends Services {
 	constructor(
 		public perro = "perrito",
 	) {
@@ -36,5 +36,3 @@ class ArticlesServices extends Services {
 
 	}
 }
-
-export { ArticlesServices };

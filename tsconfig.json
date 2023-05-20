@@ -19,6 +19,8 @@
 			"@services/*": ["./src/services/*"],
 			"@services": ["./src/services/index"],
 
+			"@controllers/*": ["./src/controllers/*"],
+
 			"@middlewares/*": ["./src/middlewares/*"],
 
 			"@schemas/*": ["./src/schemas/*"],
@@ -30,7 +32,9 @@
 
 			"@utils/*": ["./src/utils/*"],
 			"@utils": ["./src/utils/index"],
-			"@constants": ["./src/utils/constants"]
+			"@auth": ["./src/utils/auth/index"],
+			"@constants": ["./src/utils/constants"],
+			"@error": ["./src/controllers/error.controller"]
 		},
 		"allowJs": true,
 		"esModuleInterop": true

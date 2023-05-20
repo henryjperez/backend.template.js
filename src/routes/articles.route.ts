@@ -1,10 +1,9 @@
 import { Router, Response, Request, NextFunction } from "express";
-import { ArticlesServices } from "@services/articles.services";
 import { validatorMiddleware } from "@middlewares/validator.handler";
 import { getOneArticleSchema } from "@schemas/article.schema";
+import { ArticlesController } from "@controllers/articles.controller";
 
-const service = new ArticlesServices();
-const controllers = getControllers();
+const controllers = getHandlers();
 const router = Router();
 
 router.route("/")
@@ -15,14 +14,14 @@ router.route("/:slug")
 
 
 
-function getControllers() {
+function getHandlers() {
 	return {
 		get_articles: async (req: Request, res: Response, next: NextFunction) => {
 			try {
-				const arts = await service.find();
+				const articles = await ArticlesController.getArticles();
 				res.json({
-					message: "Getted",
-					data: arts,
+					message: "Articles found ✌",
+					data: { articles },
 				});
 			} catch (err) {
 				next(err);
@@ -31,13 +30,14 @@ function getControllers() {
 		getOneArticle: async (req: Request, res: Response, next: NextFunction) => {
 			try {
 				const { slug } = req.params;
-				const article = await service.findOne(slug);
+				const article = await ArticlesController.getOneArticle(slug);
 
 				res.json({
 					message: "Article found",
 					statusCode: res.statusCode,
 					data: {
 						slug,
+						article,
 					},
 				});
 			} catch (err) {
