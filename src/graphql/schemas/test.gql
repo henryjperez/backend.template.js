@@ -28,7 +28,13 @@ type Custom {
 type Mutation {
 	addPerro(dog: DePerroDto): Custom
 }
+
+# directive @length(max: Int!) on FIELD_DEFINITION
 input DePerroDto {
 	name: String
 	power: String
+}
+
+input Payload {
+	name: String!
 }
