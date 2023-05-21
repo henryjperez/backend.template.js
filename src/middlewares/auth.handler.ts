@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { api_key } from "@config"; // tmp
 import { ErrorResponse } from "@error";
-import { Roles } from "@interfaces";
+import { Roles, GqlContext, JWTPayload } from "@interfaces";
 
 export function checkApiKey(req: Request, res: Response, next: NextFunction) {
 	const apiKey = req.headers["api"];
@@ -15,16 +15,6 @@ export function checkApiKey(req: Request, res: Response, next: NextFunction) {
 	}
 }
 
-export function checkAdminRole(req: Request, res: Response, next: NextFunction) {
-	const { user } = req;
-	// @ts-ignore
-	if (user?.role === "admin") {
-		next();
-	} else {
-		throw new ErrorResponse("Unauthorized", 401);
-	}
-}
-
 export function checkRoles(...roles: Roles[]) {
 	return function checkAdminRole(req: Request, res: Response, next: NextFunction) {
 		const { user } = req;
@@ -35,4 +25,18 @@ export function checkRoles(...roles: Roles[]) {
 			throw new ErrorResponse("Unauthorized", 401);
 		}
 	}
+}
+
+export function checkRolesGql(user: JWTPayload, ...roles: Roles[]) {
+	if (!roles.includes(user.role)) {
+		throw new ErrorResponse("Unauthorized", 401);
+	}
+}
+
+export async function checkJwtGql(context: GqlContext) {
+	const { user } = await context.authenticate("jwt", { session: false });
+	if (!user) {
+		throw new ErrorResponse("Unauthenticated", 401);
+	}
+	return user;
 }

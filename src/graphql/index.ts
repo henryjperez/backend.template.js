@@ -1,5 +1,10 @@
 import { ApolloServer } from "@apollo/server";
 import { ApolloServerPluginLandingPageGraphQLPlayground } from "@apollo/server-plugin-landing-page-graphql-playground";
+import { buildContext } from "graphql-passport";
+import { JWTPayload } from "@interfaces";
+import { checkJwtGql, checkRolesGql } from "@middlewares/auth.handler";
+
+export type GqlContext = ReturnType<typeof buildContext<JWTPayload>>
 
 const typeDefs = `#graphql
 	type Query {
@@ -39,7 +44,12 @@ const typeDefs = `#graphql
 
 const resolvers = {
 	Query: {
-		perro: () => "Perrito",
+		perro: async (a, b, c: GqlContext, d) => {
+			const user = await checkJwtGql(c);
+			console.log(user);
+			checkRolesGql(user, "user");
+			return "Perrito";
+		},
 		getDog: (_, args) => `Perri llamado: ${args.name}`,
 		perriError: () => {throw new Error("Perrito Error")},
 	},
