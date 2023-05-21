@@ -1,6 +1,6 @@
 {
 	"name": "api.henryjperez.com",
-	"version": "0.8.0",
+	"version": "0.9.0",
 	"description": "This will be my personal server thing",
 	"main": "dist/index.js",
 	"author": "Henry J. Perez <henryjosiasperezrangel@gmail.com>",
