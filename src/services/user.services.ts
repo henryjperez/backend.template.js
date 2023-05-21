@@ -36,6 +36,7 @@ export class UserServices extends Services {
 	}
 
 	async verifyPassword(password: string, hash: string) {
+		// return true // DEV
 		return await verifyPassword(password, hash);
 	}
 

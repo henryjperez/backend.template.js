@@ -1,7 +1,8 @@
-import { emailChecker } from "@utils";
+import { emailChecker, signToken } from "@utils";
 import { UserServices } from "@services/user.services";
 import { ErrorResponse } from "@error";
-// import { User } from "@prisma/client";
+import { JWTPayload } from "@interfaces";
+import { User } from "@prisma/client";
 
 const service = new UserServices();
 
@@ -24,6 +25,15 @@ export class AuthController {
 		}
 
 		return user;
+	}
+
+	static signToken(user: User) {
+		const payload: JWTPayload = {
+			sub: user.id,
+			role: "user",
+		};
+		const token = signToken(payload);
+		return token;
 	}
 
 }

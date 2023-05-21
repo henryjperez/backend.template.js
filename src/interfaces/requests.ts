@@ -1,2 +1,2 @@
-export { TestProduct, TestProductPostBody } from "@routes/tests";
+export { TestProduct, TestProductPostBody } from "@routes/tests.route";
 export { TReqProperties } from "@middlewares/validator.handler";

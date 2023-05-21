@@ -1,1 +1,1 @@
-export { IServices, Pool } from "@services";
+export { IServices } from "@services";

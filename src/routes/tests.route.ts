@@ -1,8 +1,11 @@
 import { Router, Response, Request } from "express";
 import { faker } from "@faker-js/faker";
+import passport from "passport";
+
 import { checkApiKey } from "@middlewares/auth.handler";
 import { hashPassword, verifyPassword } from "@utils";
 import { ArticlesServices } from "@services/articles.services";
+import { checkRoles } from "@middlewares/auth.handler";
 
 const router = Router();
 const service = new ArticlesServices();
@@ -10,6 +13,17 @@ const service = new ArticlesServices();
 router.get("/", (req: Request, res: Response) => {
 	res.send("<h1>This is the test route</h1>")
 })
+
+router.route("/auth-perro")
+	.get(
+		passport.authenticate("jwt", { session: false }),
+		checkRoles("admin", "user"),
+		(req: Request, res: Response) => {
+			res.json({
+				message: "Perri authenticated",
+			});
+		}
+	)
 
 router.route("/perro")
 	.get(checkApiKey, async (req: Request, res: Response) => {
