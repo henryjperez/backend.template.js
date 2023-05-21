@@ -1,6 +1,5 @@
 import { ApolloServer } from "@apollo/server";
 import { ApolloServerPluginLandingPageGraphQLPlayground } from "@apollo/server-plugin-landing-page-graphql-playground";
-import { User } from "@prisma/client";
 
 const typeDefs = `#graphql
 	type Query {

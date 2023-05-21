@@ -1,6 +1,6 @@
 import express from "express";
-import { expressMiddleware } from '@apollo/server/express4';
 import { routerApi } from "@routes";
+import { gqlRouter } from "@routes/graphql.route";
 import { server as gql_server } from "@graphql";
 
 import "@auth";
@@ -15,8 +15,8 @@ export async function getApp() {
 	app.use(loggerMiddleware());
 	app.use(express.json());
 	app.use(corsMiddleware());
-	app.use("/graphql", expressMiddleware(gql_server));
-
+	
+	gqlRouter(app);
 	routerApi(app);
 	app.use(errorMiddleware);
 
