@@ -12,6 +12,8 @@
 			"@routes/*": ["./src/routes/*"],
 
 			"@graphql": ["./src/graphql/index"],
+			"@schemas": ["./src/graphql/schemas/index"],
+			"@resolvers": ["./src/graphql/resolvers/index"],
 
 			"@interfaces": ["./src/interfaces/index"],
 			"@interfaces/*": ["./src/interfaces/*"],
@@ -23,7 +25,7 @@
 
 			"@middlewares/*": ["./src/middlewares/*"],
 
-			"@schemas/*": ["./src/schemas/*"],
+			"@dto/*": ["./src/dto/*"],
 
 			"@config": ["./src/config/index"],
 			"@config/*": ["./src/config/*"],

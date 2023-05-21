@@ -1,13 +1,13 @@
 import { Router, Response, Request, NextFunction } from "express";
 import { validatorMiddleware } from "@middlewares/validator.handler";
-import { getOneArticleSchema } from "@schemas/article.schema";
+import { getOneArticleSchema } from "@dto/article.schema";
 import { ArticlesController } from "@controllers/articles.controller";
 
 const controllers = getHandlers();
 const router = Router();
 
 router.route("/")
-	.get(controllers.get_articles)
+	.get(controllers.get_articles);
 
 router.route("/:slug")
 	.get(validatorMiddleware(getOneArticleSchema, "params"), controllers.getOneArticle);

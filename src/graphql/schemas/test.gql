@@ -1,0 +1,35 @@
+type Query {
+	perro: String
+	getDog(name: String): String
+	perriError: Int
+
+	getString: String
+	getInt: Int
+	getBool: Boolean
+	getFloat: Float
+	getId: ID
+
+	getNotNull: String!
+
+	getList: [Int]
+	getNotNullInstead: [Int]!
+	getNotNullInList: [Float!]
+	getNotNullsAtAll: [String!]!
+
+	custom(name: String): Custom
+
+	gato: gato
+}
+
+type Custom {
+	id: ID
+	name: String
+}
+
+type Mutation {
+	addPerro(dog: DePerroDto): Custom
+}
+input DePerroDto {
+	name: String
+	power: String
+}
