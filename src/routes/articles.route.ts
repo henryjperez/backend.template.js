@@ -1,6 +1,6 @@
 import { Router, Response, Request, NextFunction } from "express";
 import { validatorMiddleware } from "@middlewares/validator.handler";
-import { getOneArticleSchema } from "@dto/article.schema";
+import { getOneArticleSchema } from "@dto/article.dto";
 import { ArticlesController } from "@controllers/articles.controller";
 
 const controllers = getHandlers();
