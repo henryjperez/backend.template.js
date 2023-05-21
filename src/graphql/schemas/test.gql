@@ -17,8 +17,7 @@ type Query {
 	getNotNullsAtAll: [String!]!
 
 	custom(name: String): Custom
-
-	gato: gato
+	gato: Gato
 }
 
 type Custom {

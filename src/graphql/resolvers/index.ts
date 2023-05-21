@@ -1,9 +1,10 @@
 import { buildContext } from "graphql-passport";
 import { checkJwtGql, checkRolesGql } from "@middlewares/auth.handler";
 import { JWTPayload } from "@interfaces";
+import { Resolvers } from "./types";
 
 export type GqlContext = ReturnType<typeof buildContext<JWTPayload>>
-export const resolvers = {
+export const resolvers: Resolvers = {
 	Query: {
 		perro: async (a, b, c: GqlContext, d) => {
 			const user = await checkJwtGql(c);
@@ -13,6 +14,7 @@ export const resolvers = {
 		},
 		getDog: (_, args) => `Perri llamado: ${args.name}`,
 		perriError: () => { throw new Error("Perrito Error") },
+		gato: () => ({name: "gato"})
 	},
 	Mutation: {
 		addPerro: (_, { dog }) => {

@@ -39,7 +39,9 @@
 			"@error": ["./src/controllers/error.controller"]
 		},
 		"allowJs": true,
-		"esModuleInterop": true
+		"esModuleInterop": true,
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true
 	},
 	"include": ["src/**/*"]
 }
