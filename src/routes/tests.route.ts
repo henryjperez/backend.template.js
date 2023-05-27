@@ -6,6 +6,7 @@ import { checkApiKey } from "@middlewares/auth.handler";
 import { hashPassword, verifyPassword } from "@utils";
 import { ArticlesServices } from "@services/articles.services";
 import { checkRoles } from "@middlewares/auth.handler";
+import { imageHandler, imagesMiddleware } from "@middlewares/images.handler";
 
 const router = Router();
 const service = new ArticlesServices();
@@ -13,6 +14,12 @@ const service = new ArticlesServices();
 router.get("/", (req: Request, res: Response) => {
 	res.send("<h1>This is the test route</h1>")
 })
+
+router.post("/perro-file", ...imagesMiddleware("perro", 1, 900), (req, res) => {
+	console.log(req.body, req.file);
+
+	res.send("Perrito bonito");
+});
 
 router.route("/auth-perro")
 	.get(
