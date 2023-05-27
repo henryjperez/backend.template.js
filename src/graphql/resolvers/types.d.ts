@@ -24,11 +24,6 @@ export type DePerroDto = {
   power?: InputMaybe<Scalars['String']>;
 };
 
-export type Gato = {
-  __typename?: 'Gato';
-  name?: Maybe<Scalars['String']>;
-};
-
 export type Mutation = {
   __typename?: 'Mutation';
   addPerro?: Maybe<Custom>;
@@ -39,10 +34,13 @@ export type MutationAddPerroArgs = {
   dog?: InputMaybe<DePerroDto>;
 };
 
+export type Payload = {
+  name: Scalars['String'];
+};
+
 export type Query = {
   __typename?: 'Query';
   custom?: Maybe<Custom>;
-  gato?: Maybe<Gato>;
   getBool?: Maybe<Scalars['Boolean']>;
   getDog?: Maybe<Scalars['String']>;
   getFloat?: Maybe<Scalars['Float']>;
@@ -144,10 +142,10 @@ export type ResolversTypes = ResolversObject<{
   Custom: ResolverTypeWrapper<Custom>;
   DePerroDto: DePerroDto;
   Float: ResolverTypeWrapper<Scalars['Float']>;
-  Gato: ResolverTypeWrapper<Gato>;
   ID: ResolverTypeWrapper<Scalars['ID']>;
   Int: ResolverTypeWrapper<Scalars['Int']>;
   Mutation: ResolverTypeWrapper<{}>;
+  Payload: Payload;
   Query: ResolverTypeWrapper<{}>;
   String: ResolverTypeWrapper<Scalars['String']>;
 }>;
@@ -158,10 +156,10 @@ export type ResolversParentTypes = ResolversObject<{
   Custom: Custom;
   DePerroDto: DePerroDto;
   Float: Scalars['Float'];
-  Gato: Gato;
   ID: Scalars['ID'];
   Int: Scalars['Int'];
   Mutation: {};
+  Payload: Payload;
   Query: {};
   String: Scalars['String'];
 }>;
@@ -172,18 +170,12 @@ export type CustomResolvers<ContextType = any, ParentType extends ResolversParen
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }>;
 
-export type GatoResolvers<ContextType = any, ParentType extends ResolversParentTypes['Gato'] = ResolversParentTypes['Gato']> = ResolversObject<{
-  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-}>;
-
 export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = ResolversObject<{
   addPerro?: Resolver<Maybe<ResolversTypes['Custom']>, ParentType, ContextType, Partial<MutationAddPerroArgs>>;
 }>;
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = ResolversObject<{
   custom?: Resolver<Maybe<ResolversTypes['Custom']>, ParentType, ContextType, Partial<QueryCustomArgs>>;
-  gato?: Resolver<Maybe<ResolversTypes['Gato']>, ParentType, ContextType>;
   getBool?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
   getDog?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, Partial<QueryGetDogArgs>>;
   getFloat?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
@@ -201,7 +193,6 @@ export type QueryResolvers<ContextType = any, ParentType extends ResolversParent
 
 export type Resolvers<ContextType = any> = ResolversObject<{
   Custom?: CustomResolvers<ContextType>;
-  Gato?: GatoResolvers<ContextType>;
   Mutation?: MutationResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
 }>;

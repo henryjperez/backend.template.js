@@ -4,12 +4,10 @@ import passport from "passport";
 
 import { checkApiKey } from "@middlewares/auth.handler";
 import { hashPassword, verifyPassword } from "@utils";
-import { ArticlesServices } from "@services/articles.services";
 import { checkRoles } from "@middlewares/auth.handler";
 import { imageHandler, imagesMiddleware } from "@middlewares/images.handler";
 
 const router = Router();
-const service = new ArticlesServices();
 
 router.get("/", (req: Request, res: Response) => {
 	res.send("<h1>This is the test route</h1>")
@@ -35,10 +33,8 @@ router.route("/auth-perro")
 router.route("/perro")
 	.get(checkApiKey, async (req: Request, res: Response) => {
 		res.statusCode = 203;
-		const perro = await service.create();
 
 		res.json({
-			perro,
 			value: 200 * 200,
 		})
 	})

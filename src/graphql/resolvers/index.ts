@@ -19,7 +19,6 @@ export const resolvers: Resolvers = {
 			return `Perri llamado: ${args.name}`;
 		},
 		perriError: () => { throw new Error("Perrito Error") },
-		gato: () => ({name: "gato"})
 	},
 	Mutation: {
 		addPerro: (_, { dog }) => {

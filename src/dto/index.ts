@@ -1,4 +1,3 @@
-export * from "./article.dto";
 export * from "./tests.dto";
 
 // -------
