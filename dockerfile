@@ -3,9 +3,13 @@ FROM node:16
 WORKDIR /usr/app
 
 COPY package*.json ./
+COPY yarn.lock ./
 
 RUN yarn install
 
-COPY [".", /usr/app]
+COPY ./ ./
+
+RUN yarn generate:prisma
+RUN yarn generate:codegen
 
 CMD [ "yarn", "start" ]

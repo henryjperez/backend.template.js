@@ -13,7 +13,8 @@
 		"lint": "eslint",
 		"e2e": "jest --config ./jest.e2e.config.js --verbose",
 		"e2e:coverage": "jest --config ./jest.e2e.config.js --verbose --coverage",
-		"generate:codegen": "graphql-codegen"
+		"generate:codegen": "graphql-codegen",
+		"generate:prisma": "prisma generate"
 	},
 	"dependencies": {
 		"@apollo/server": "4.7.1",

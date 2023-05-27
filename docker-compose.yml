@@ -21,17 +21,36 @@ services:
     ports:
       - 5050:80
 
-  # app:
-  #   container_name: app
-  #   env_file:
-  #     - .env
-  #   depends_on:
-  #     - pgadmin
-  #   ports:
-  #     - "${PORT}:9000"
-  #   volumes:
-  #     - .:/usr/app
-  #   build:
-  #     context: ./
-  #     target: dev
-  #   command: yarn dev
+  app_dev:
+    container_name: app_dev
+    profiles:
+      - app_dev # docker compose --profile app_dev up
+    env_file:
+      - .env
+    depends_on:
+      - pgadmin
+    ports:
+      - "${PORT}:${PORT}"
+    volumes:
+      - type: bind
+        source: ./src
+        target: /usr/app/src
+    build:
+      context: ./
+      dockerfile: dockerfile.dev
+
+  app:
+    container_name: app
+    profiles:
+      - app # docker compose --profile app up
+    env_file:
+      - .env
+    depends_on:
+      - pgadmin
+    ports:
+      - "${PORT}:${PORT}"
+    volumes:
+      - ./src:/usr/app/src
+    build:
+      context: ./
+      dockerfile: dockerfile
