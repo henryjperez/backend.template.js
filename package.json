@@ -1,7 +1,7 @@
 {
-	"name": "api.henryjperez.com",
+	"name": "backend.template.js ",
 	"version": "1.0.0",
-	"description": "This will be my personal server thing",
+	"description": "This is a template for start working with a fully configured backend repository of node.js",
 	"main": "dist/index.js",
 	"author": "Henry J. Perez <henryjosiasperezrangel@gmail.com>",
 	"license": "MIT",
