@@ -13,57 +13,19 @@ export type Scalars = {
   Float: number;
 };
 
-export type Custom = {
-  __typename?: 'Custom';
-  id?: Maybe<Scalars['ID']>;
-  name?: Maybe<Scalars['String']>;
-};
-
-export type DePerroDto = {
-  name?: InputMaybe<Scalars['String']>;
-  power?: InputMaybe<Scalars['String']>;
-};
-
 export type Mutation = {
   __typename?: 'Mutation';
-  addPerro?: Maybe<Custom>;
+  setTest?: Maybe<Scalars['String']>;
 };
 
 
-export type MutationAddPerroArgs = {
-  dog?: InputMaybe<DePerroDto>;
-};
-
-export type Payload = {
-  name: Scalars['String'];
+export type MutationSetTestArgs = {
+  value?: InputMaybe<Scalars['String']>;
 };
 
 export type Query = {
   __typename?: 'Query';
-  custom?: Maybe<Custom>;
-  getBool?: Maybe<Scalars['Boolean']>;
-  getDog?: Maybe<Scalars['String']>;
-  getFloat?: Maybe<Scalars['Float']>;
-  getId?: Maybe<Scalars['ID']>;
-  getInt?: Maybe<Scalars['Int']>;
-  getList?: Maybe<Array<Maybe<Scalars['Int']>>>;
-  getNotNull: Scalars['String'];
-  getNotNullInList?: Maybe<Array<Scalars['Float']>>;
-  getNotNullInstead: Array<Maybe<Scalars['Int']>>;
-  getNotNullsAtAll: Array<Scalars['String']>;
-  getString?: Maybe<Scalars['String']>;
-  perriError?: Maybe<Scalars['Int']>;
-  perro?: Maybe<Scalars['String']>;
-};
-
-
-export type QueryCustomArgs = {
-  name?: InputMaybe<Scalars['String']>;
-};
-
-
-export type QueryGetDogArgs = {
-  name?: InputMaybe<Scalars['String']>;
+  test?: Maybe<Scalars['String']>;
 };
 
 export type WithIndex<TObject> = TObject & Record<string, any>;
@@ -139,13 +101,7 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = ResolversObject<{
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
-  Custom: ResolverTypeWrapper<Custom>;
-  DePerroDto: DePerroDto;
-  Float: ResolverTypeWrapper<Scalars['Float']>;
-  ID: ResolverTypeWrapper<Scalars['ID']>;
-  Int: ResolverTypeWrapper<Scalars['Int']>;
   Mutation: ResolverTypeWrapper<{}>;
-  Payload: Payload;
   Query: ResolverTypeWrapper<{}>;
   String: ResolverTypeWrapper<Scalars['String']>;
 }>;
@@ -153,46 +109,20 @@ export type ResolversTypes = ResolversObject<{
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = ResolversObject<{
   Boolean: Scalars['Boolean'];
-  Custom: Custom;
-  DePerroDto: DePerroDto;
-  Float: Scalars['Float'];
-  ID: Scalars['ID'];
-  Int: Scalars['Int'];
   Mutation: {};
-  Payload: Payload;
   Query: {};
   String: Scalars['String'];
 }>;
 
-export type CustomResolvers<ContextType = any, ParentType extends ResolversParentTypes['Custom'] = ResolversParentTypes['Custom']> = ResolversObject<{
-  id?: Resolver<Maybe<ResolversTypes['ID']>, ParentType, ContextType>;
-  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-}>;
-
 export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = ResolversObject<{
-  addPerro?: Resolver<Maybe<ResolversTypes['Custom']>, ParentType, ContextType, Partial<MutationAddPerroArgs>>;
+  setTest?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, Partial<MutationSetTestArgs>>;
 }>;
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = ResolversObject<{
-  custom?: Resolver<Maybe<ResolversTypes['Custom']>, ParentType, ContextType, Partial<QueryCustomArgs>>;
-  getBool?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
-  getDog?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, Partial<QueryGetDogArgs>>;
-  getFloat?: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
-  getId?: Resolver<Maybe<ResolversTypes['ID']>, ParentType, ContextType>;
-  getInt?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
-  getList?: Resolver<Maybe<Array<Maybe<ResolversTypes['Int']>>>, ParentType, ContextType>;
-  getNotNull?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  getNotNullInList?: Resolver<Maybe<Array<ResolversTypes['Float']>>, ParentType, ContextType>;
-  getNotNullInstead?: Resolver<Array<Maybe<ResolversTypes['Int']>>, ParentType, ContextType>;
-  getNotNullsAtAll?: Resolver<Array<ResolversTypes['String']>, ParentType, ContextType>;
-  getString?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  perriError?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
-  perro?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  test?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
 }>;
 
 export type Resolvers<ContextType = any> = ResolversObject<{
-  Custom?: CustomResolvers<ContextType>;
   Mutation?: MutationResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
 }>;

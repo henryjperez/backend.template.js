@@ -1,6 +1,6 @@
 import Joi from "joi";
-import { QueryGetDogArgs } from "@interfaces";
+import {  } from "@interfaces";
 
-export const getDogSchema = Joi.object<QueryGetDogArgs>({
+export const getTestSchema = Joi.object<any>({
 	name: Joi.string().required().max(2),
 });

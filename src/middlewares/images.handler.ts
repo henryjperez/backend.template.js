@@ -13,7 +13,6 @@ const storage = multer.diskStorage({
 		try {
 			const uuid = randomUUID();
 			const fileExt = file.mimetype.split("/")[1];
-			console.log(uuid, fileExt, file);
 
 			callback(null, `${uuid}.${fileExt}`);
 		} catch (err) {

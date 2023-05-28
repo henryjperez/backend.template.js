@@ -1,39 +1,7 @@
 type Query {
-	perro: String
-	getDog(name: String): String
-	perriError: Int
-
-	getString: String
-	getInt: Int
-	getBool: Boolean
-	getFloat: Float
-	getId: ID
-
-	getNotNull: String!
-
-	getList: [Int]
-	getNotNullInstead: [Int]!
-	getNotNullInList: [Float!]
-	getNotNullsAtAll: [String!]!
-
-	custom(name: String): Custom
-}
-
-type Custom {
-	id: ID
-	name: String
+	test: String
 }
 
 type Mutation {
-	addPerro(dog: DePerroDto): Custom
-}
-
-# directive @length(max: Int!) on FIELD_DEFINITION
-input DePerroDto {
-	name: String
-	power: String
-}
-
-input Payload {
-	name: String!
+	setTest(value: String): String
 }

@@ -11,7 +11,7 @@
 		"dev": "NODE_ENV=DEVELOPMENT nodemon src/index.ts --config ./nodemon.json",
 		"dev:docker": "docker compose --profile app_dev up",
 		"db": "docker compose up -d",
-		"build": "tsc --project tsconfig.json && tsc-alias",
+		"build": "tsc --project tsconfig.json && tsc-alias && node copy_files.js",
 		"lint": "eslint",
 		"e2e": "jest --config ./jest.e2e.config.js --verbose",
 		"e2e:coverage": "jest --config ./jest.e2e.config.js --verbose --coverage",
@@ -20,7 +20,6 @@
 	},
 	"dependencies": {
 		"@apollo/server": "4.7.1",
-		"@apollo/server-plugin-landing-page-graphql-playground": "4.0.0",
 		"@faker-js/faker": "7.6.0",
 		"@prisma/client": "4.14.0",
 		"bcrypt": "5.1.0",

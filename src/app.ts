@@ -13,7 +13,7 @@ export async function getApp() {
 	await gql_server.start();
 
 	app.use(loggerMiddleware());
-	// app.use(express.json());
+	app.use(express.json());
 	app.use(corsMiddleware());
 	
 	gqlRouter(app);
