@@ -1,5 +1,4 @@
 import { Router, Response, Request } from "express";
-import { faker } from "@faker-js/faker";
 import passport from "passport";
 
 import { checkApiKey } from "@middlewares/auth.handler";
