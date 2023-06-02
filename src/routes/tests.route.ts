@@ -91,12 +91,7 @@ router.route("/products")
 		const limit = Number(size) || 1;
 
 		for (let i = 0; i < limit; i++) {
-			products.push({
-				id: faker.database.mongodbObjectId(),
-				name: faker.commerce.productName(),
-				price: parseInt(faker.commerce.price(), 10),
-				image: faker.image.imageUrl(),
-			})
+			
 		}
 
 		res.status(300).json(products);
