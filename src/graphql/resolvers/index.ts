@@ -8,7 +8,8 @@ import { getTestSchema, validateSchema } from "@dto";
 export type GqlContext = ReturnType<typeof buildContext<JWTPayload>>
 export const resolvers: Resolvers = {
 	Query: {
-		test: () => "test string",
+		user: () => ({ email: "developer@360integrations.io", id: 1, name: "Developer Name"}),
+		documents: () => ({ date: new Date().toDateString(), id: 1, name: "Top Secret" }),
 	},
 	Mutation: {
 		setTest: () => "Set test string",

@@ -1,7 +1,26 @@
 type Query {
-	test: String
+	user: User
+	documents: Documents
+	pdf: PDF
 }
 
 type Mutation {
 	setTest(value: String): String
+}
+
+
+type User {
+	id: Int
+	email: String
+	name: String
+}
+
+type Documents {
+	id: Int
+	date: String
+	name: String
+}
+
+type PDF {
+	name: String
 }

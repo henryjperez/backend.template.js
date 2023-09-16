@@ -8,6 +8,7 @@
 		"outDir": "./build",
 		"baseUrl": "./",
 		"paths": {
+			"@/*": ["./src/../*"],
 			"@routes": ["./src/routes/index"],
 			"@routes/*": ["./src/routes/*"],
 
@@ -50,6 +51,7 @@
 		"emitDecoratorMetadata": true,
 		"experimentalDecorators": true,
 		"forceConsistentCasingInFileNames": true,
+		"resolveJsonModule": true,
 		"strict": false
 	},
 	"include": ["src/**/*"]

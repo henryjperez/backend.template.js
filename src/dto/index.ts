@@ -1,4 +1,5 @@
 export * from "./tests.dto";
+export * from "./auth.dto";
 
 // -------
 import Joi from "joi";

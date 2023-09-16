@@ -8,7 +8,7 @@ function getSchemas() {
 		return splitName[splitName.length - 1] === "gql";
 	});
 
-	const filesContent = []
+	const filesContent = [];
 	filteredSchemas.forEach((file) => filesContent.push(fs.readFileSync(path.join(__dirname, file), "utf-8")));
 	const schema = filesContent.join("\n");
 	return schema;
