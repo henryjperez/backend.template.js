@@ -2,6 +2,8 @@ import cors from 'cors';
 import { isDevMode } from "@config";
 
 export function corsMiddleware() {
+	return cors();
+
 	if (isDevMode) {
 		return cors();
 	}

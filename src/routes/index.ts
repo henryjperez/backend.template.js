@@ -1,13 +1,12 @@
 import { Application, Router } from "express";
-import { router as testsRouter } from "./tests.route";
-import { router as authRouter } from "./auth.route";
+
+import { v1Routes } from "./v1";
+
 
 function routerApi(app: Application) {
 	const router = Router();
-	app.use("/v1", router);
 
-	router.use("/tests", testsRouter);
-	router.use("/auth", authRouter);
+	v1Routes(app, router);
 }
 
 export { routerApi };
