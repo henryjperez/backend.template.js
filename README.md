@@ -6,6 +6,9 @@ I always find difficult to set a **Node.js** project from the ground. Specially 
 
 So, I decided to create this template to help deal with that boilerplate.
 
+## Before you run
+Copy the content of the `.env.example`, create a file called `.env` and paste it in there. This are test environment variables, so you can change them to whatever you want.
+
 ## How to Run
 
 I'll be using `yarn` for the these code snippets but you can use `npm` if you want.
