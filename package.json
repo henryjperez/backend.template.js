@@ -10,13 +10,17 @@
 		"start": "NODE_ENV=PRODUCTION node build/index.js",
 		"dev": "NODE_ENV=DEVELOPMENT nodemon src/index.ts --config ./nodemon.json",
 		"dev:docker": "docker compose --profile app_dev up",
+
 		"db": "docker compose up -d",
 		"db:migrate": "prisma migrate",
 		"db:create-tables": "prisma db push",
+
 		"build": "tsc --project tsconfig.json && tsc-alias && node copy_files.js",
 		"lint": "eslint",
+
 		"e2e": "jest --config ./jest.e2e.config.js --verbose",
 		"e2e:coverage": "jest --config ./jest.e2e.config.js --verbose --coverage",
+
 		"generate:codegen": "graphql-codegen",
 		"generate:prisma": "prisma generate"
 	},
