@@ -2,7 +2,7 @@ import { buildContext } from "graphql-passport";
 
 import { checkJwtGql, checkRolesGql } from "@middlewares/auth.handler";
 import { JWTPayload, Resolvers } from "@interfaces";
-import { getTestSchema, validateSchema } from "@dto";
+import { validateSchema } from "@dto";
 
 
 export type GqlContext = ReturnType<typeof buildContext<JWTPayload>>

@@ -64,9 +64,15 @@ export function imageResizer(input: HW | number) {
 	}
 }
 
-export function imagesMiddleware(fieldName = "file", maxCount = 1, resize: HW | number) {
+export function imagesMiddleware(fieldName = "file", maxCount = 1, resize?: HW | number) {
+	const result = [];
 	const handler = imageHandler(fieldName, maxCount);
-	const parser = imageResizer(resize);
+	result.push(handler);
 
-	return [handler, parser];
+	if (resize) {
+		const parser = imageResizer(resize);
+		result.push(parser);
+	}
+
+	return result;
 }

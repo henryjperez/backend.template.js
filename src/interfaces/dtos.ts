@@ -1,1 +1,1 @@
-export { UserLogin, UserRegistry } from "@dto";
+export { UserLogin, UserRegistry, TestDTOQuery, TestDTOParams, TestDTOBody } from "@dto";
