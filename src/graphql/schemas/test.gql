@@ -1,26 +1,12 @@
-type Query {
-	user: User
-	documents: Documents
-	pdf: PDF
+# Extent the "Query" and "Mutation" types for adding the things you have in the this file
+extend type Query {
+	moreTests: Test
+}
+extend type Mutation {
+	setMoreTests(value: String): String
 }
 
-type Mutation {
-	setTest(value: String): String
-}
-
-
-type User {
-	id: Int
-	email: String
+type Test {
 	name: String
-}
-
-type Documents {
-	id: Int
-	date: String
-	name: String
-}
-
-type PDF {
-	name: String
+	value: Int
 }
