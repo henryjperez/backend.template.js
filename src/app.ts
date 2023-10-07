@@ -14,6 +14,7 @@ export async function getApp() {
 
 	app.use(loggerMiddleware());
 	app.use(express.json());
+	// app.use(express.urlencoded({ extended: true }));
 	app.use(corsMiddleware());
 	
 	gqlRouter(app);

@@ -16,7 +16,6 @@ export interface TestDTOParams {
 	firstName: string;
 	lastName: string;
 }
-
 export const getTestDTOQuerySchema = Joi.object<TestDTOQuery>({
 	name: Joi.string().required().max(10),
 	minimumSevenTeen: Joi.string().min(17),
@@ -30,4 +29,8 @@ export const postTestDTOBodySchema = Joi.object<TestDTOBody>({
 export const getTestDTOParamsSchema = Joi.object<TestDTOParams>({
 	firstName: Joi.string().required().max(10),
 	lastName: Joi.string().required().max(10),
+});
+
+export const postImageWithTextBodySchema = Joi.object({
+	text: Joi.string().required(),
 });
