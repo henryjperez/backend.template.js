@@ -1,6 +1,6 @@
 {
 	"name": "backend-template",
-	"version": "1.5.0",
+	"version": "1.5.3",
 	"description": "This is a template for start working with a fully configured backend repository of node.js",
 	"main": "dist/index.js",
 	"author": "Henry J. Perez <henryjosiasperezrangel@gmail.com>",
@@ -11,8 +11,6 @@
 		"dev": "NODE_ENV=DEVELOPMENT nodemon src/index.ts --config ./nodemon.json",
 		"dev:docker": "docker compose --profile app_dev up",
 		"db": "docker compose up -d",
-		"db:migrate": "prisma migrate",
-		"db:create-tables": "prisma db push",
 		"build": "tsc --project tsconfig.json && tsc-alias && node copy_files.js",
 		"lint": "eslint",
 		"e2e": "jest --config ./jest.e2e.config.js --verbose",

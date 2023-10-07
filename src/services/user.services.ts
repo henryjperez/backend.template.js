@@ -6,7 +6,6 @@ export interface Registry {
 	email: string;
 	password: string;
 	name: string;
-	access_token: string;
 }
 const prisma = new PrismaClient();
 // @ts-ignore

@@ -89,3 +89,8 @@ yarn generate:codegen
 ```
 
 For now it only supports `.gql` files. To modify this use the `codegen.ts` and `copy_files.js` at the root of the project.
+
+## Prisma
+```
+prisma migrate dev --name name_of_the_migration
+```

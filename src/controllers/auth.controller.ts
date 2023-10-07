@@ -13,7 +13,6 @@ export class AuthController {
 		const isEmail = emailChecker(userIdentifier);
 		const findBy = isEmail ? "email" : "username";
 		const user = await service.find(findBy, userIdentifier);
-		console.log("EMAIL", isEmail, userIdentifier, user, !user);
 
 		if (!user) {
 			const err = new ErrorResponse("User not found", 404);
@@ -31,7 +30,7 @@ export class AuthController {
 
 	static async register(user: UserRegistry) {
 		const hashPass = await hashPassword(user.password);
-		const response = await service.register({ ...user, access_token: "123123", password: hashPass });
+		const response = await service.register({ ...user, password: hashPass });
 		return response;
 	}
 
