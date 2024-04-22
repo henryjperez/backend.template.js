@@ -1,0 +1,1 @@
+curl --location 'http://localhost:9000/v1/test/test-dto?name=Maximo&minimumSevenTeen=Super%20mega%20long%20string%20full%20of%20hope'

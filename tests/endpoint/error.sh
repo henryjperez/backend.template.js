@@ -1,0 +1,1 @@
+curl --location 'http://localhost:9000/v1/test/error'
