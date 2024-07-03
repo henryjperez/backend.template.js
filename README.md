@@ -6,6 +6,8 @@ I always find difficult to set a **Node.js** project from the ground. Specially 
 
 So, I decided to create this template to help deal with that boilerplate.
 
+## [Documentation](https://www.postman.com/henryjperez/workspace/backend-template)
+
 ## Before you run
 Copy the content of the `.env.example`, create a file called `.env` and paste it in there. This are test environment variables, so you can change them to whatever you want.
 
@@ -22,6 +24,13 @@ Run the database (make sure to have docker and docker compose installed)
 ```sh
 yarn db
 ```
+
+### Prisma
+```
+yarn prisma migrate dev --name name_of_the_migration
+```
+
+---
 
 ```sh
 yarn dev
@@ -90,7 +99,3 @@ yarn generate:codegen
 
 For now it only supports `.gql` files. To modify this use the `codegen.ts` and `copy_files.js` at the root of the project.
 
-## Prisma
-```
-prisma migrate dev --name name_of_the_migration
-```
