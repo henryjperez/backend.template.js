@@ -1,4 +1,6 @@
 import { Router, Response, Request, NextFunction } from "express";
+import passport from "passport";
+
 import { validatorMiddleware } from "@middlewares/validator.handler";
 import { imagesMiddleware, imageResizeMiddleware } from "@middlewares/images.handler";
 import { getTestDTOQuerySchema, postTestDTOBodySchema, getTestDTOParamsSchema, postImageWithTextBodySchema } from "@dto";
@@ -14,6 +16,7 @@ const router = Router();
 /* -------------------------------------------- */
 router.route("/ping").get(controllers.ping);
 router.route("/error").get(controllers.error);
+router.route("/test-jwt").get(passport.authenticate("jwt", { session: false }), controllers.testJWT);
 
 router.route("/test-dto")
 	.get(validatorMiddleware(getTestDTOQuerySchema, "query"), controllers.testDTOGetQuery)
@@ -49,6 +52,15 @@ function getHandlers() {
 
 				res.json({
 					message: "You shouldn't see this message",
+				});
+			} catch (err) {
+				next(err);
+			}
+		},
+		testJWT: async (req: Request, res: Response, next: NextFunction) => {
+			try {
+				res.json({
+					message: "you are jwt authenticated",
 				});
 			} catch (err) {
 				next(err);

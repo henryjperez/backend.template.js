@@ -21,6 +21,9 @@
 			"@resolvers": ["./src/graphql/resolvers/index"],
 			"@resolvers/*": ["./src/graphql/resolvers/*"],
 
+			"@scalars": ["./src/graphql/scalars/index"],
+			"@scalars/*": ["./src/graphql/scalars/*"],
+
 
 			"@interfaces": ["./src/interfaces/index"],
 			"@interfaces/*": ["./src/interfaces/*"],

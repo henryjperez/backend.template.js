@@ -1,10 +1,16 @@
 import { Application } from "express";
 import { expressMiddleware } from '@apollo/server/express4';
+import passport from "passport";
+
 import { server as gql_server } from "@graphql";
-import { buildContext } from "graphql-passport";
+import { isDevMode } from "@config";
 
 export function gqlRouter(app: Application) {
-	app.use("/graphql", expressMiddleware(gql_server, {
-		context: async ({ req, res }) => buildContext({req, res}),
-	}));
+	if (isDevMode) {
+		// app.use("/graphql", expressMiddleware(gql_server)); // use this one instead to activate apollo playground
+		app.use("/graphql", passport.authenticate("jwt", { session: false }), expressMiddleware(gql_server)); // comment this one and comment the one above to use the apollo playground
+	}
+	if (!isDevMode) {
+		app.use("/graphql", passport.authenticate("jwt", { session: false }), expressMiddleware(gql_server));
+	}
 }
