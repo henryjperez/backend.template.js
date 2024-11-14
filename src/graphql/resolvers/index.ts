@@ -1,25 +1,32 @@
-import { buildContext } from "graphql-passport";
-
 import { checkJwtGql, checkRolesGql } from "@middlewares/auth.handler";
-import { JWTPayload, Resolvers } from "@interfaces";
-import { validateSchema } from "@dto";
+import { UserServices } from "@services/user.services";
+import { JWTPayload, Resolvers, User } from "@interfaces";
+import { dateScalar } from "@scalars";
 
-const db = {
-	users: [
-		{ email: "henryjosiasperezrangel@gmail.com", id: 0, name: "Henry J. Perez" },
-		{ email: "me@henryjperez.com", id: 1, name: "Henry J. Perez" },
-	]
-}
-export type GqlContext = ReturnType<typeof buildContext<JWTPayload>>
+const userService = new UserServices();
+// export type GqlContext = ReturnType<<JWTPayload>>
 export const resolvers: Resolvers = {
+// export const resolvers: Resolvers<GqlContext> = {
 	Query: {
-		user: (obj, args, context, info) => db.users[args.id],
-		users: () => db.users,
-		test: () => "This is a String to test the GQL Query",
-		moreTests: () => ({ name: "Another test", value: 800 }),
+		abc: () => "abc",
+		user: async (obj, args, context, info) => {
+			const user = await userService.findById(Number(args.id));
+			return user;
+		},
+		users: async (obj, args, context, info) => {
+			const users = await userService.findMany(args.skip, args.limit);
+			return users;
+		},
+		test: (obj, args, context, info) => {
+			return {
+				ping: "pong",
+				pong: "ping",
+			};
+		},
 	},
 	Mutation: {
-		setTest: (obj, args, context, info) => "Set test string " + String(args.value),
-		setMoreTests: (obj, args, context, info) => "More testing strings " + args?.value,
+		setAbc: (obj, args, context, info) => "Set test string " + String(args.value),
+		setTest: (obj, args, context, info) => "More testing strings " + args?.value,
 	},
+	Date: dateScalar,
 };

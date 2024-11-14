@@ -1,7 +1,9 @@
 type Query {
-	test: String
+	# test: String
+	abc: String
 }
 
 type Mutation {
-	setTest(value: Int!): String
+	# setTest(value: Int!): String
+	setAbc(value: Int!): String
 }

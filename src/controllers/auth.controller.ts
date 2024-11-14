@@ -12,7 +12,7 @@ export class AuthController {
 	static async login(userIdentifier: string, password) {
 		const isEmail = emailChecker(userIdentifier);
 		const findBy = isEmail ? "email" : "username";
-		const user = await service.find(findBy, userIdentifier);
+		const user = await service.find(findBy, userIdentifier, true);
 
 		if (!user) {
 			const err = new ErrorResponse("User not found", 404);

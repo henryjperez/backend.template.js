@@ -1,12 +1,12 @@
 # Extent the "Query" and "Mutation" types for adding the things you have in the this file
 extend type Query {
-	moreTests: Test
+	test: Test
 }
 extend type Mutation {
-	setMoreTests(value: String): String
+	setTest(value: String): String
 }
 
 type Test {
-	name: String
-	value: Int
+	ping: String
+	pong: String
 }
