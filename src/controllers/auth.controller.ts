@@ -8,7 +8,6 @@ import { User } from "@prisma/client";
 const service = new UserServices();
 
 export class AuthController {
-
 	static async login(userIdentifier: string, password) {
 		const isEmail = emailChecker(userIdentifier);
 		const findBy = isEmail ? "email" : "username";

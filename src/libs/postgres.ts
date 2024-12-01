@@ -1,5 +1,5 @@
 import { Client } from "pg";
-import { postgres_host, postgres_db, postgres_password, postgres_port, postgres_user, postgres_uri } from "@config";
+import { postgres_host, postgres_db, postgres_password, postgres_port, postgres_user } from "@config";
 
 export async function getConnection() {
 	const client = new Client({
