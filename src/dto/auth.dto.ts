@@ -16,11 +16,13 @@ export interface UserRegistry {
 	email: string;
 	password: string;
 	name: string;
+	username: string;
 }
 
 
 export const postUserRegisterSchema = Joi.object<UserRegistry>({
 	name: Joi.string().required().max(255).required(),
+	username: Joi.string().required().max(255).required(),
 	email: Joi.string().required().max(255).required(),
 	password,
 });

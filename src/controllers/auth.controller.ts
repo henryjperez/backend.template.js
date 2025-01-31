@@ -7,7 +7,7 @@ import { hashPassword } from "@utils";
 const service = new UserServices();
 
 export class AuthController {
-	static async login(userIdentifier: string, password: string) {
+	static async login(userIdentifier: UserLogin["username"], password: UserLogin["password"]) {
 		const isEmail = emailChecker(userIdentifier);
 		const findBy = isEmail ? "email" : "username";
 		const user = await service.find(findBy, userIdentifier, true);
@@ -17,11 +17,11 @@ export class AuthController {
 			throw err;
 		}
 
-		// const isMatchPassword = await service.verifyPassword(password, user.password);
-		// if (!isMatchPassword) {
-		// 	const err = new ErrorResponse("Unauthorized", 401);
-		// 	throw err;
-		// }
+		const isMatchPassword = await service.verifyPassword(password, user.password);
+		if (!isMatchPassword) {
+			const err = new ErrorResponse("Unauthorized", 401);
+			throw err;
+		}
 
 		return user;
 	}
