@@ -1,31 +1,32 @@
 import { Services } from "@services";
 import { verifyPassword } from "@utils";
-import { User, PrismaClient } from "@prisma/client";
+import { User as UserORM } from "@db";
 
 export interface Registry {
 	email: string;
 	password: string;
 	name: string;
 }
-const prisma = new PrismaClient();
 // @ts-ignore
-const dummyUser: User = { email: "", id: 123123, name: "" };
+const dummyUser: UserORM = { email: "", id: 123123, name: "" };
 type tFindKeys = "email" | "username" | "id";
 export class UserServices extends Services {
 	// Auth User
 	async findById(id: number, selectPassword = false) {
-		const user = await prisma.user.findUnique({ where: { id } });
-		if (!selectPassword) {
-			delete user.password;
-		}
+		const user = dummyUser;
+		// const user = await prisma.user.findUnique({ where: { id } });
+		// if (!selectPassword) {
+		// 	delete user.password;
+		// }
 		return user;
 	}
 	async findByEmail(email: string, selectPassword = false) {
-		const user = await prisma.user.findUnique({ where: { email } });
-		if (!selectPassword) {
-			delete user.password;
-		}
-		return user;
+		// const user = await prisma.user.findUnique({ where: { email } });
+		// if (!selectPassword) {
+		// 	delete user.password;
+		// }
+		// return user;
+		return dummyUser;
 	}
 	async findByUsername(username: string, selectPassword = false) {
 		// TEST
@@ -37,8 +38,9 @@ export class UserServices extends Services {
 	}
 
 	async findMany(skip = 0, limit: number) {
-		const users = await prisma.user.findMany({ skip, take: limit});
-		users.forEach(user => delete user.password);
+		const users = [dummyUser];
+		// const users = await prisma.user.findMany({ skip, take: limit});
+		// users.forEach(user => delete user.password);
 		return users;
 	}
 
@@ -63,7 +65,12 @@ export class UserServices extends Services {
 	}
 
 	async register(user: Registry) {
-		return await prisma.user.create({data: user});
+		const userorm = new UserORM();
+		userorm.email = user.email;
+		userorm.name = user.name;
+		userorm.password = user.password;
+		return await userorm.save();
+		// return await prisma.user.create({data: user});
 	}
 
 }

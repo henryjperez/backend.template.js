@@ -1,4 +1,4 @@
-FROM node:16
+FROM node:20
 
 WORKDIR /usr/app
 
@@ -9,7 +9,7 @@ RUN yarn install
 
 COPY ./ ./
 
-RUN yarn generate:prisma
+# RUN yarn generate:prisma
 RUN yarn generate:codegen
 
 CMD [ "yarn", "dev" ]

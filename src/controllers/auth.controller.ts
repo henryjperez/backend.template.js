@@ -3,12 +3,11 @@ import { UserServices } from "@services/user.services";
 import { ErrorResponse } from "@error";
 import { JWTPayload, UserRegistry, UserLogin } from "@interfaces";
 import { hashPassword } from "@utils";
-import { User } from "@prisma/client";
 
 const service = new UserServices();
 
 export class AuthController {
-	static async login(userIdentifier: string, password) {
+	static async login(userIdentifier: string, password: string) {
 		const isEmail = emailChecker(userIdentifier);
 		const findBy = isEmail ? "email" : "username";
 		const user = await service.find(findBy, userIdentifier, true);
@@ -18,11 +17,11 @@ export class AuthController {
 			throw err;
 		}
 
-		const isMatchPassword = await service.verifyPassword(password, user.password);
-		if (!isMatchPassword) {
-			const err = new ErrorResponse("Unauthorized", 401);
-			throw err;
-		}
+		// const isMatchPassword = await service.verifyPassword(password, user.password);
+		// if (!isMatchPassword) {
+		// 	const err = new ErrorResponse("Unauthorized", 401);
+		// 	throw err;
+		// }
 
 		return user;
 	}
@@ -33,7 +32,8 @@ export class AuthController {
 		return response;
 	}
 
-	static signToken(user: User) {
+	// static signToken(user: User) {
+	static signToken(user: any) {
 		const payload: JWTPayload = {
 			sub: user.id,
 			role: "user",

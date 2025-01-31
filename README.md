@@ -25,11 +25,6 @@ Run the database (make sure to have docker and docker compose installed)
 yarn db
 ```
 
-### Prisma
-```
-yarn prisma migrate dev --name name_of_the_migration
-```
-
 ---
 
 ```sh
@@ -73,7 +68,7 @@ Here's a list of dependencies that I added to work with it. You don't have to us
 	- REST API
 - Database
 	- Postgres
-	- Prisma (ORM)
+	- TypeORM
 - Docker
 	- Database
 	- Admin (Postgres)
