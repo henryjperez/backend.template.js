@@ -10,12 +10,16 @@
 		"start": "NODE_ENV=PRODUCTION node build/index.js",
 		"dev": "NODE_ENV=DEVELOPMENT nodemon src/index.ts --config ./nodemon.json",
 		"dev:docker": "docker compose --profile app_dev up",
+		"db:init": "docker compose up -d; ts-node -r tsconfig-paths/register ./node_modules/.bin/typeorm migration:run -d src/libs/typeorm.ts",
 		"db": "docker compose up -d",
 		"build": "tsc --project tsconfig.json && tsc-alias && node copy_files.js",
 		"lint": "eslint",
 		"e2e": "jest --config ./jest.e2e.config.js --verbose",
 		"e2e:coverage": "jest --config ./jest.e2e.config.js --verbose --coverage",
-		"generate:codegen": "graphql-codegen"
+		"generate:codegen": "graphql-codegen",
+		"typeorm": "ts-node -r tsconfig-paths/register ./node_modules/.bin/typeorm",
+		"migration:run": "ts-node -r tsconfig-paths/register ./node_modules/.bin/typeorm migration:run -d src/libs/typeorm.ts",
+		"migration:revert": "ts-node -r tsconfig-paths/register ./node_modules/.bin/typeorm migration:revert -d src/libs/typeorm.ts"
 	},
 	"dependencies": {
 		"@apollo/server": "4.11.2",

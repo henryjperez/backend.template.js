@@ -1,4 +1,3 @@
-import "reflect-metadata";
 import { getApp } from "./app";
 import { port } from "@config";
 import { AppDataSource } from "@libs/typeorm";

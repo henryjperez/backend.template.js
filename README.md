@@ -11,7 +11,7 @@ So, I decided to create this template to help deal with that boilerplate.
 ## Before you run
 Copy the content of the `.env.example`, create a file called `.env` and paste it in there. This are test environment variables, so you can change them to whatever you want.
 
-## How to Run
+## Installing
 
 I'll be using `yarn` for the these code snippets but you can use `npm` if you want.
 
@@ -19,19 +19,25 @@ I'll be using `yarn` for the these code snippets but you can use `npm` if you wa
 yarn install
 ```
 
-Run the database (make sure to have docker and docker compose installed)
+Setup the database and create tables (make sure to have docker and docker compose installed)
+
+```sh
+yarn db:init
+```
+
+---
+
+## How tu use
 
 ```sh
 yarn db
 ```
 
----
-
 ```sh
 yarn dev
 ```
 
-Or, to initialize the **database** and the **app server**
+(Deprecated) Or, to initialize the **database** and the **app server**
 
 ```sh
 yarn dev:docker

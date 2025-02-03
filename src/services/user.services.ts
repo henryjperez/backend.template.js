@@ -3,8 +3,6 @@ import { verifyPassword } from "@utils";
 import { User } from "@db";
 import { UserRegistry } from "@dto";
 
-// @ts-ignore
-const dummyUser: User = { email: "", id: 123123, name: "" };
 type tFindKeys = "email" | "username" | "id";
 export class UserServices extends Services {
 	// Auth User

@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import { DataSource } from "typeorm";
 
 import { postgres_host, postgres_db, postgres_password, postgres_port, postgres_user, db_type, isDevMode } from "@config";
@@ -11,6 +12,8 @@ export const AppDataSource = new DataSource({
 	port: Number(postgres_port),
 	database: postgres_db,
 	logging: isDevMode,
-	synchronize: true,
+	synchronize: isDevMode,
+	// synchronize: false,
 	entities: [User],
+	migrations: ["src/db/migrations/**/*.ts"],
 });
