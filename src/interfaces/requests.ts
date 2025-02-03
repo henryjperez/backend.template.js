@@ -2,7 +2,7 @@
 import { Request } from "express";
 
 export { TReqProperties } from "@middlewares/validator.handler";
-export { GqlContext } from "@resolvers";
+// export { GqlContext } from "@resolvers";
 export * from "@resolvers/types"
 
 export interface RequestBody<T> extends Request {

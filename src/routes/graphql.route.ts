@@ -8,7 +8,7 @@ import { isDevMode } from "@config";
 export function gqlRouter(app: Application) {
 	if (isDevMode) {
 		// app.use("/graphql", expressMiddleware(gql_server)); // use this one instead to activate apollo playground
-		app.use("/graphql", passport.authenticate("jwt", { session: false }), expressMiddleware(gql_server)); // comment this one and comment the one above to use the apollo playground
+		app.use("/graphql", passport.authenticate("jwt", { session: false }), expressMiddleware(gql_server)); // comment this one and uncomment the one above to use the apollo playground
 	}
 	if (!isDevMode) {
 		app.use("/graphql", passport.authenticate("jwt", { session: false }), expressMiddleware(gql_server));

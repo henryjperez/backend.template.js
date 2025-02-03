@@ -11,6 +11,7 @@ export const perro = process.env.PERRO;
 export const port = process.env.PORT || 9000;
 export const api_key = process.env.API_KEY;
 export const jwt_secret = process.env.JWT_SECRET;
+export const db_type = process.env.DB_TYPE;
 
 // Postgres
 export const postgres_db = process.env.POSTGRES_DB;

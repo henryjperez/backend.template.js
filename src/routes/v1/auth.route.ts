@@ -1,7 +1,6 @@
 import { Router, Response, Request, NextFunction } from "express";
 import passport from "passport";
 import { AuthController } from "@controllers/auth.controller";
-import { UserServices } from "@services/user.services";
 import { validatorMiddleware } from "@middlewares/validator.handler";
 import { postUserRegisterSchema, postUserLoginSchema } from "@dto";
 import { RequestBody, UserLogin, UserRegistry } from "@interfaces";
@@ -9,7 +8,6 @@ import { RequestBody, UserLogin, UserRegistry } from "@interfaces";
 
 const controllers = getHandlers();
 const router = Router();
-const service = new UserServices();
 
 
 router.route("/login")
@@ -40,9 +38,9 @@ function getHandlers() {
 
 		register: async (req: RequestBody<UserRegistry>, res: Response, next: NextFunction) => {
 			try {
-				const user = req.body;
+				const {email, name, password, username} = req.body;
 
-				const userCreated = await AuthController.register(user);
+				const userCreated = await AuthController.register({ email, name, password, username });
 				const token = AuthController.signToken(userCreated);
 
 				delete userCreated.password;

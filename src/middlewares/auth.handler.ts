@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { api_key } from "@config"; // tmp
 import { ErrorResponse } from "@error";
-import { Roles, GqlContext, JWTPayload } from "@interfaces";
+import { Roles, JWTPayload } from "@interfaces";
 
 export function checkApiKey(req: Request, res: Response, next: NextFunction) {
 	const apiKey = req.headers["api"];
@@ -33,10 +33,10 @@ export function checkRolesGql(user: JWTPayload, ...roles: Roles[]) {
 	}
 }
 
-export async function checkJwtGql(context: GqlContext) {
-	const { user } = await context.authenticate("jwt", { session: false });
-	if (!user) {
-		throw new ErrorResponse("Unauthenticated", 401);
-	}
-	return user;
-}
+// export async function checkJwtGql(context: GqlContext) {
+// 	const { user } = await context.authenticate("jwt", { session: false });
+// 	if (!user) {
+// 		throw new ErrorResponse("Unauthenticated", 401);
+// 	}
+// 	return user;
+// }
